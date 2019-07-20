@@ -1,31 +1,30 @@
 public class SingleTonTest{
-	
+
 	public static void main(String[] args){
 		
-		SingleTon1 singleTon1 = SingleTon1.getInstance();
-		SingleTon1 singleTon2 = SingleTon1.getInstance();
-		
-		if(singleTon1 == singleTon2){
+		SingleTon singleTonTest = SingleTon.getInstance();
+		SingleTon singleTonTest2 = SingleTon.getInstance();
+
+		if(singleTonTest == singleTonTest2){
 			System.out.println(true);
 		} else {
 			System.out.println(false);
-		}
+		}		
 	}
 }
 
-class SingleTon1{
+class SingleTon{
 	
-	private SingleTon1(){}
+	private SingleTon(){}
 
-	private static SingleTon1 singleTon1 = null;
+	private static SingleTon singleTon = null;
 
-	public static SingleTon1 getInstance(){
+	public static SingleTon getInstance(){
+
+		if(singleTon == null){
+			singleTon = new SingleTon();
+		}
 		
-		if(singleTon1 == null){
-			singleTon1 = new SingleTon1();
-		} 
-		
-		return singleTon1;
-
+		return singleTon;
 	}
 }
